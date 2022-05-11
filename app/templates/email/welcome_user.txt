@@ -1,0 +1,7 @@
+Hello {{user.username}}
+
+Welcome!
+
+Signed up! Please review our pitches and feel free add new content.
+
+Thanks.
