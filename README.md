@@ -32,3 +32,6 @@ This app allows users to use that one minute wisely. The users will submit their
 ## Prerequisites
 * Python3.8
 
+## License
+*Copyright (c) 2022 Innoncencia Kakan/sixty-seconds
+
