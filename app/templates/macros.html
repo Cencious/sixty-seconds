@@ -1,0 +1,52 @@
+{% macro displayPitches(pitches_list) %}
+
+
+<div class="row">
+{% for pitch in pitches_list %}
+  <div class="col-3">
+    <div class="card" style="width:18rem; font-weight: bolder;">
+      <div class="card-body">
+        <p class="card-text">{{pitch.pitch}}</p>
+        <a href="{{url_for('main.new_comment',id=pitch.id)}}" class="card-link">Add comment</a>
+        <a href="{{url_for('main.view_comments',id=pitch.id)}}" class="card-link">View comments</a>
+        <a href="{{url_for('main.view_comments',id=pitch.id)}}" class="card-link"><i class="fas fa-thumbs-up"></i></a>
+        <a href="{{url_for('main.view_comments',id=pitch.id)}}" class="card-link"><i class="fas fa-thumbs-down"></i></a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+</div>
+
+
+{% endmacro %}
+
+<!-- Displaying comments macro -->
+{% macro displayComments(list_of_comments) %}
+{% for comment in list_of_comments  %}
+<div class="row">
+
+  <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
+    <h4>Author</h4>
+    <p>{{comment.user.username}}</p>
+  </div>
+  <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+    <h2> <a href="{{url_for('main.single_comment',id=comment.id)}}">{{comment.pitch_title}}</a> </h2>
+  </div>
+</div>
+
+{% endfor %}
+{% endmacro %}
+
+{% macro displayPitchesInCategories(pitches,id)%}
+{% for pitch in pitches %}
+{% if pitch.category_id==id%}
+<div class="panel style=" style="box-shadow: 5px 5px 5px 5px #f2f2f2; padding:10px;">
+  <p>{{pitch.pitch}}</p>
+  <a href="{{url_for('main.new_comment',id=pitch.id)}}">Add a Comment</a>&nbsp;&nbsp;|
+  <a href="{{url_for('main.view_comments',id=pitch.id)}}">View Comments</a>&nbsp;&nbsp;|
+  <a href="{{url_for('main.new_comment',id=pitch.id)}}">Vote</a>
+</div>
+{% endif%}
+{% endfor %}
+{% endmacro%}

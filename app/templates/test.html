@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <div class="container">
+        {% for item in pitch.comments %}
+        {{item.comment}}
+        {%endfor%}
+
+
+    </div>
+{% endblock %}
